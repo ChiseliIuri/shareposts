@@ -60,7 +60,15 @@
                 //Make sure errors are empty
                 if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && empty($data['confirm_password_err'])){
                     //Validated
-                    die('Success');
+                    
+                    //Hash the password
+                    $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                    //Register user
+                    if($this->userModel->register($data)){
+                        redirect('users/login');
+                    } else {
+                        die('Something went wrong');
+                    }
                 } else {
                     //Load views with errors
                     $this->view('users/register', $data);
