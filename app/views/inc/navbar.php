@@ -10,6 +10,9 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
           </li>
+          <li class="nav-item" style="display:<?php echo isLoggedIn() ? 'block' : 'none'  ?>;">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/posts">Posts</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
           </li>
